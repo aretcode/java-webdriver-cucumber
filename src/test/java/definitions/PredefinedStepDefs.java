@@ -1,11 +1,10 @@
 // Created by Viacheslav (Slava) Skryabin 04/01/2018
 package definitions;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.But;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -113,7 +112,9 @@ public class PredefinedStepDefs {
     @Then("^element with xpath \"([^\"]*)\" should have text as \"([^\"]*)\"$")
     public void elementWithXpathShouldHaveTextAs(String xpath, String text) {
         String actualText = getDriver().findElement(By.xpath(xpath)).getText();
+        System.out.println(xpath + " " + text);
         assertThat(actualText).isEqualTo(text);
+
     }
 
     @Then("^element with xpath \"([^\"]*)\" should contain text \"([^\"]*)\"$")
@@ -126,6 +127,7 @@ public class PredefinedStepDefs {
     public void elementWithXpathShouldHaveAttributeAs(String xpath, String attribute, String attributeValue) {
         assertThat(getDriver().findElement(By.xpath(xpath)).getAttribute(attribute)).isEqualTo(attributeValue);
     }
+
 
     @Then("^I switch to iframe with xpath \"([^\"]*)\"$")
     public void iSwitchToIframeWithXpath(String xpath) {
@@ -167,6 +169,7 @@ public class PredefinedStepDefs {
         getDriver().findElement(By.xpath(xpath)).clear();
     }
 
+
     @Then("^I should see page title as \"([^\"]*)\"$")
     public void iShouldSeePageTitleAs(String title) {
         assertThat(getDriver().getTitle()).isEqualTo(title);
@@ -186,4 +189,36 @@ public class PredefinedStepDefs {
         Thread.sleep(500);
     }
 
+    @Then("^I validate that text \"([^\"]*)\" and text with xpath \"([^\"]*)\" is equal$")
+    public void iValidateThatTextAndTextWithXpathIsEqual(String xpath, String text) throws Throwable {
+        try{
+            boolean equal = getDriver().findElement(By.xpath(xpath)).getText().equals(text);
+            String equal2 = getDriver().findElement(By.xpath(xpath)).getText();
+            System.out.println(equal2);
+            if (equal==true ){
+                System.out.println("Text with xpath " + xpath + " is equals to" + text);
+            }
+        }
+        catch(Exception e){
+        }
+        throw new PendingException();
+    }
+
+    @Then("^I verify that text with xpath \"([^\"]*)\" is displayed")
+    public void verifyError(String xpath){
+        try{
+            boolean error = getDriver().findElement(By.xpath(xpath)).isDisplayed();
+            if (error==true ){
+                System.out.println("Error is displayed");
+            }
+        }
+        catch(Exception e){
+        }
+    }
+
+    @Then("^I wait \"([^\"]*)\" millisecond$")
+    public void iWaitSecond(int unit) throws Throwable {
+        Thread.sleep(unit);
+        throw new PendingException();
+    }
 }

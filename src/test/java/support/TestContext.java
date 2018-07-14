@@ -1,6 +1,7 @@
 // Created by Viacheslav (Slava) Skryabin 04/01/2018
 package support;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -13,16 +14,19 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Parameters;
+
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class TestContext {
 
     private static WebDriver driver;
 
     public static void initialize() {
-        setDriver("chrome");
+        setDriver("chrome","Teacher");
     }
 
     public static void close() {
@@ -33,11 +37,12 @@ public class TestContext {
         return driver;
     }
 
-    public static void setDriver(String browser) {
-        driver = initializeDriver(browser);
+    public static void setDriver(String browser, String accountType) {
+        driver = initializeDriver(browser, accountType);
     }
 
-    private static WebDriver initializeDriver(String browser) {
+    @Parameters("accountType")
+    private static WebDriver initializeDriver(String browser, String accountType) {
         try {
             WebDriver driver;
             String osName = System.getProperty("os.name");
@@ -60,6 +65,21 @@ public class TestContext {
                     chromeOptions.addArguments("--start-maximized");
                     chromeOptions.setExperimentalOption("prefs", chromePreferences);
                     driver = new ChromeDriver(chromeOptions);
+
+                    if(accountType.equals("Teacher")){
+                        System.out.println("Initial type Account");
+                        driver.get("http://local.school.portnov.com:4520/#/login");
+                        driver.findElement(By.xpath("//input[@formcontrolname='email']")).sendKeys("nikita_teacher@amail.club");
+                        driver.findElement(By.xpath("//input[@formcontrolname='password']")).sendKeys("0123456789");
+                        driver.findElement(By.xpath("//button[@type='submit']")).click();
+                        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);                    }
+
+
+                    else{
+                        System.out.println("Pleace set accountType using this command: mvn -DaccountType=Teacher install");
+                        closeDriver();
+                    }
+
                     break;
                 case "firefox":
                     String geckoDriverName = "geckodriver.exe";
@@ -106,6 +126,20 @@ public class TestContext {
             return null;
         }
     }
+
+//    private static void setLogin(String accountType){
+//        if(accountType.equals("Teacher")){
+//            System.out.println("Initial type Account");
+//            driver.get("http://local.school.portnov.com:4520/#/login");
+//            driver.findElement(By.xpath("//input[@formcontrolname='email']")).sendKeys("nikita_teacher@amail.club");
+//            driver.findElement(By.xpath("//input[@formcontrolname='password']")).sendKeys("0123456789");
+//            driver.findElement(By.xpath("//button[@type='submit']")).click();
+//        }
+//        else{
+//            System.out.println("Pleace set accountType using this command: mvn -DaccountType=Teacher install");
+//            closeDriver();
+//        }
+//    }
 
     private static void closeDriver() {
         driver.quit();

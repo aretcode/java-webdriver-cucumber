@@ -5,6 +5,7 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.testng.annotations.Parameters;
 
 public class Hooks {
 
@@ -14,7 +15,7 @@ public class Hooks {
         TestContext.getDriver().manage().deleteAllCookies();
     }
 
-    @After(order = 0)
+    @After(order = 3)
     public void scenarioEnd(Scenario scenario) {
         if (scenario.isFailed()) {
             TakesScreenshot screenshotTaker = (TakesScreenshot) TestContext.getDriver();
