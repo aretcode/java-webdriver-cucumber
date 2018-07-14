@@ -1,0 +1,9 @@
+D:\MyDoc\automation\java-webdriver-testng-maven_intellij\java-webdriver-cucumber>git status
+D:\MyDoc\automation\java-webdriver-testng-maven_intellij\java-webdriver-cucumber>git remote -v
+D:\MyDoc\automation\java-webdriver-testng-maven_intellij\java-webdriver-cucumber>git branch NikitaChange
+D:\MyDoc\automation\java-webdriver-testng-maven_intellij\java-webdriver-cucumber>git checkout NikitaChange
+D:\MyDoc\automation\java-webdriver-testng-maven_intellij\java-webdriver-cucumber>git branch
+D:\MyDoc\automation\java-webdriver-testng-maven_intellij\java-webdriver-cucumber>git add .
+D:\MyDoc\automation\java-webdriver-testng-maven_intellij\java-webdriver-cucumber>git status
+D:\MyDoc\automation\java-webdriver-testng-maven_intellij\java-webdriver-cucumber>git commit -m"Nikita Changes"
+D:\MyDoc\automation\java-webdriver-testng-maven_intellij\java-webdriver-cucumber>git status

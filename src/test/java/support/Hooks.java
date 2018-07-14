@@ -15,7 +15,7 @@ public class Hooks {
         TestContext.getDriver().manage().deleteAllCookies();
     }
 
-    @After(order = 3)
+    @After(order = 0)
     public void scenarioEnd(Scenario scenario) {
         if (scenario.isFailed()) {
             TakesScreenshot screenshotTaker = (TakesScreenshot) TestContext.getDriver();
