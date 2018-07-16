@@ -39,7 +39,7 @@ public class TestContext {
 
     private static WebDriver initializeDriver(String browser) {
         try {
-            WebDriver driver;
+//            WebDriver driver;
             String osName = System.getProperty("os.name");
             switch (browser) {
                 case "chrome":
