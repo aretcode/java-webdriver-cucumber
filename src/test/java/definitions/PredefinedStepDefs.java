@@ -1,6 +1,7 @@
 // Created by Viacheslav (Slava) Skryabin 04/01/2018
 package definitions;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -184,6 +185,39 @@ public class PredefinedStepDefs {
         executor.executeScript("arguments[0].scrollIntoView(false);", element);
         executor.executeScript("window.scrollBy(0, " + offset + ");", element);
         Thread.sleep(500);
+    }
+
+    @Then("^I validate that text \"([^\"]*)\" and text with xpath \"([^\"]*)\" is equal$")
+    public void iValidateThatTextAndTextWithXpathIsEqual(String xpath, String text) throws Throwable {
+        try{
+            boolean equal = getDriver().findElement(By.xpath(xpath)).getText().equals(text);
+            String equal2 = getDriver().findElement(By.xpath(xpath)).getText();
+            System.out.println(equal2);
+            if (equal==true ){
+                System.out.println("Text with xpath " + xpath + " is equals to" + text);
+            }
+        }
+        catch(Exception e){
+        }
+        throw new PendingException();
+    }
+
+    @Then("^I verify that text with xpath \"([^\"]*)\" is displayed")
+    public void verifyError(String xpath){
+        try{
+            boolean error = getDriver().findElement(By.xpath(xpath)).isDisplayed();
+            if (error==true ){
+                System.out.println("Error is displayed");
+            }
+        }
+        catch(Exception e){
+        }
+    }
+
+    @Then("^I wait \"([^\"]*)\" millisecond$")
+    public void iWaitSecond(int unit) throws Throwable {
+        Thread.sleep(unit);
+        throw new PendingException();
     }
 
 }
