@@ -7,6 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
@@ -216,13 +217,37 @@ public class PredefinedStepDefs {
         }
     }
 
-    @Then("^I wait \"([^\"]*)\" millisecond$")
-    public void iWaitSecond(int unit) throws Throwable {
-        Thread.sleep(unit);
+
+    @Then("^I Cut inputed data from field with xpath \"([^\"]*)\"$")
+    public void iCutInputedDataFromFieldWithXpath(String xpath) throws Throwable {
+        getDriver().findElement(By.xpath(xpath)).sendKeys(Keys.CONTROL + "a");
+        String result = getDriver().findElement(By.xpath(xpath)).getAttribute("value");
+        if(result.equals("")){
+            System.out.println("Menu 'Cut' is enable");
+        }
+        else{
+            System.out.println("Menu 'Cut' is disable");
+        }
         throw new PendingException();
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> master
+    @Then("^I get value from the field with xpath \"([^\"]*)\" that equal to \"([^\"]*)\"$")
+    public void iTryGetValueFromTheFieldWithXpath(String xpath, String requiredValue) throws Throwable {
+        String getres = getDriver().findElement(By.xpath(xpath)).getAttribute("value");
+        if(getres.equals(requiredValue)){
+            System.out.println("Value from field is equal to required Value");
+        }else{
+            System.out.println("Value from field isn't equal to required Value");
+        }
+        throw new PendingException();
+    }
+
+//    @Then("^I Copy inputed data from field with xpath \"([^\"]*)\"$")
+//    public void iCopyInputedDataFromFieldWithXpath(String xpath) throws Throwable {
+//
+//        String result = String.valueOf(getDriver().findElement(By.xpath(xpath)).sendKeys(Keys.CONTROL + "c"));
+//        throw new PendingException();
+//    }
+
+
 }
