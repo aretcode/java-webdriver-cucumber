@@ -221,4 +221,8 @@ public class PredefinedStepDefs {
         Thread.sleep(unit);
         throw new PendingException();
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 }

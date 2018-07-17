@@ -20,17 +20,23 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+<<<<<<< HEAD
+=======
+
+import org.testng.annotations.Parameters;
+
+>>>>>>> master
 
 public class TestContext {
 
-    private static WebDriver driver;
+    public static WebDriver driver;
 
     public static void initialize() {
         setDriver("chrome","Teacher");
     }
 
     public static void close() {
-        closeDriver();
+        driver.quit();
     }
 
     public static WebDriver getDriver() {
@@ -44,8 +50,8 @@ public class TestContext {
     @Parameters("accountType")
     private static WebDriver initializeDriver(String browser, String accountType) {
         try {
-            WebDriver driver;
             String osName = System.getProperty("os.name");
+
             switch (browser) {
                 case "chrome":
                     String chromeDriverName = "chromedriver.exe";
@@ -72,6 +78,7 @@ public class TestContext {
                         driver.findElement(By.xpath("//input[@formcontrolname='email']")).sendKeys("nikita_teacher@amail.club");
                         driver.findElement(By.xpath("//input[@formcontrolname='password']")).sendKeys("0123456789");
                         driver.findElement(By.xpath("//button[@type='submit']")).click();
+<<<<<<< HEAD
                         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);                    }
 
 
@@ -80,6 +87,14 @@ public class TestContext {
                         closeDriver();
                     }
 
+=======
+                        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+                    }
+                    else{
+                        System.out.println("Pleace set accountType using this command: mvn -DaccountType=Teacher install");
+                        close();
+                    }
+>>>>>>> master
                     break;
                 case "firefox":
                     String geckoDriverName = "geckodriver.exe";
@@ -127,6 +142,7 @@ public class TestContext {
         }
     }
 
+<<<<<<< HEAD
 //    private static void setLogin(String accountType){
 //        if(accountType.equals("Teacher")){
 //            System.out.println("Initial type Account");
@@ -145,6 +161,8 @@ public class TestContext {
         driver.quit();
     }
 
+=======
+>>>>>>> master
     private static String getDriversDirPath() {
         return System.getProperty("user.dir") + String.format("%1$ssrc%1$stest%1$sresources%1$sdrivers%1$s", File.separator);
     }
