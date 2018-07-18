@@ -191,12 +191,12 @@ public class PredefinedStepDefs {
     }
 
     @Then("^I validate that text \"([^\"]*)\" and text with xpath \"([^\"]*)\" is equal$")
-    public void iValidateThatTextAndTextWithXpathIsEqual(String xpath, String text) {
+    public void iValidateThatTextAndTextWithXpathIsEqual(String xpath, String text) throws Throwable {
         try{
             boolean equal = getDriver().findElement(By.xpath(xpath)).getText().equals(text);
             String equal2 = getDriver().findElement(By.xpath(xpath)).getText();
             System.out.println(equal2);
-            if (equal){
+            if (equal==true ){
                 System.out.println("Text with xpath " + xpath + " is equals to" + text);
             }
         }
@@ -209,7 +209,7 @@ public class PredefinedStepDefs {
     public void verifyError(String xpath){
         try{
             boolean error = getDriver().findElement(By.xpath(xpath)).isDisplayed();
-            if (error){
+            if (error==true ){
                 System.out.println("Error is displayed");
             }
         }
@@ -219,7 +219,7 @@ public class PredefinedStepDefs {
 
 
     @Then("^I Cut inputed data from field with xpath \"([^\"]*)\"$")
-    public void iCutInputedDataFromFieldWithXpath(String xpath) {
+    public void iCutInputedDataFromFieldWithXpath(String xpath) throws Throwable {
         getDriver().findElement(By.xpath(xpath)).sendKeys(Keys.CONTROL + "a");
         String result = getDriver().findElement(By.xpath(xpath)).getAttribute("value");
         if(result.equals("")){
@@ -232,7 +232,7 @@ public class PredefinedStepDefs {
     }
 
     @Then("^I get value from the field with xpath \"([^\"]*)\" that equal to \"([^\"]*)\"$")
-    public void iTryGetValueFromTheFieldWithXpath(String xpath, String requiredValue) {
+    public void iTryGetValueFromTheFieldWithXpath(String xpath, String requiredValue) throws Throwable {
         String getres = getDriver().findElement(By.xpath(xpath)).getAttribute("value");
         if(getres.equals(requiredValue)){
             System.out.println("Value from field is equal to required Value");

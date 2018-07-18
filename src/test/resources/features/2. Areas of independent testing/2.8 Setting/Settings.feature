@@ -15,6 +15,4 @@ Feature: 2.8.3 Setting
 
   @Area_of_independent_testing @Teacher @Student
   Scenario: Veryfi user can push setting buttom
-    Then I click on element with xpath "//h5[contains(text(),'Setting')]"
-    Then element with xpath "//h4[contains(text(),'Settings')]" should contain text "Settings"
 

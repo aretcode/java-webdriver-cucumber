@@ -73,6 +73,8 @@ public class TestContext {
                         driver.findElement(By.xpath("//input[@formcontrolname='password']")).sendKeys("0123456789");
                         driver.findElement(By.xpath("//button[@type='submit']")).click();
                         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);                    }
+
+
                     else{
                         System.out.println("Pleace set accountType using this command: mvn -DaccountType=Teacher install");
                         close();
