@@ -9,7 +9,6 @@ import org.junit.runner.RunWith;
         plugin = {"pretty", "html:target/cucumber", "json:target/cucumber/report.json"},
         features = "src/test/resources/features",
         glue = {"definitions", "support"}
-        //dryRun = true
 )
 public class TestRunner {
 }
