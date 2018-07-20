@@ -13,7 +13,7 @@ Feature: 2.8.2 Change your password
     Then I click on element with xpath "//button[@type='submit']"
 #########################################################################################################
 
-  @Area_of_independent_testing @Teacher @Student
+  @Area_of_independent_testing
   Scenario: User can change password
     Then I click on element with xpath "//h5[contains(text(),'Setting')]"
     Then I click on element with xpath "//span[contains(text(),'Change Your Password')]"
@@ -28,7 +28,7 @@ Feature: 2.8.2 Change your password
     Then I click on element with xpath "//button[@type='submit']"
     Then I should see page title as "//"
 
-  @Area_of_independent_testing @Teacher @Student
+  @Area_of_independent_testing
   Scenario: Input 4 characters in password field
     Then I click on element with xpath "//h5[contains(text(),'Setting')]"
     Then I click on element with xpath "//span[contains(text(),'Change Your Password')]"
@@ -39,7 +39,7 @@ Feature: 2.8.2 Change your password
     Then element with xpath "<string>" should contain text "<string>"
 
 
-  @Area_of_independent_testing @Teacher @Student
+  @Area_of_independent_testing
   Scenario: Input max characters in password field
     Then I click on element with xpath "//h5[contains(text(),'Setting')]"
     Then I click on element with xpath "//span[contains(text(),'Change Your Password')]"
@@ -54,7 +54,7 @@ Feature: 2.8.2 Change your password
     Then I click on element with xpath "//button[@type='submit']"
     Then I should see page title as "//"
 
-  @Area_of_independent_testing @Teacher @Student
+  @Area_of_independent_testing
   Scenario: Password field displays input in bullets
     Then I click on element with xpath "//h5[contains(text(),'Setting')]"
     Then I click on element with xpath "//span[contains(text(),'Change Your Password')]"
@@ -62,7 +62,7 @@ Feature: 2.8.2 Change your password
     Then element with xpath "//input[@placeholder='New Password' and @type='password']" should be enabled
     Then element with xpath "//input[@placeholder='Confirm New Password' and @type='password']" should be enabled
 
-  @Area_of_independent_testing @Teacher @Student
+  @Area_of_independent_testing
   Scenario: "Cut" menu item on "Password" field is disabled
     Then I click on element with xpath "//h5[contains(text(),'Setting')]"
     Then I click on element with xpath "//span[contains(text(),'Change Your Password')]"
@@ -75,7 +75,7 @@ Feature: 2.8.2 Change your password
     Then I click on element with xpath "//button[@type='submit']"
 
 
-  @Area_of_independent_testing @Teacher @Student
+  @Area_of_independent_testing
   Scenario: "Copy" menu item on "Passwosd" field is disabled
     Then I click on element with xpath "//h5[contains(text(),'Setting')]"
     Then I click on element with xpath "//span[contains(text(),'Change Your Password')]"
@@ -89,7 +89,7 @@ Feature: 2.8.2 Change your password
     Then I verify that got value from the field with xpath "//input[@placeholder='Confirm New Password']" is equal to ""
 #    Then I Copy inputed data from field with xpath "//input[@placeholder='Confirm New Password']"
 
-  @Area_of_independent_testing @Teacher @Student
+  @Area_of_independent_testing
   Scenario: "Verify user can create password with spesial characters"
     Then I click on element with xpath "//h5[contains(text(),'Setting')]"
     Then I click on element with xpath "//span[contains(text(),'Change Your Password')]"

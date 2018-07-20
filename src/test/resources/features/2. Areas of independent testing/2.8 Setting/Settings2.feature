@@ -13,6 +13,7 @@ Feature: 2.8.3 Setting
     Then I click on element with xpath "//button[@type='submit']"
 #########################################################################################################
 
-  @Area_of_independent_testing @Teacher @Student
+  @Area_of_independent_testing
   Scenario: Verify user can push setting buttom
+    Then I click on element with xpath "//h5[contains(text(),'Setting')]"
 
