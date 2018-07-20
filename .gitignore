@@ -1,3 +1,10 @@
+/bin/
+/target/
 /.idea/
-/.target/
-/.javaWebdriverCucumber.iml/
+/.name/
+/compiler.xml/
+/encodings.xml/
+/misc.xml/
+/vcs.xml/
+/workspace.xml/
+/javaWebdriverCucumber.iml/

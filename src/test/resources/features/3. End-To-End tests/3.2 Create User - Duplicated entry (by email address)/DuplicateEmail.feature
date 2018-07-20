@@ -1,4 +1,3 @@
-@3._End-To-End_tests
 Feature: Duplicate Email
 
 #########################################################################################################
@@ -7,7 +6,7 @@ Feature: Duplicate Email
 #
 #########################################################################################################
 
-  @3._End-To-End_tests @Register
+  @3.End-To-End_tests
   Scenario: Duplicate Email
     When I open url "http://local.school.portnov.com:4520/#/login"
     Then I click on element with xpath "//span[contains(text(),'Register Now')]"
