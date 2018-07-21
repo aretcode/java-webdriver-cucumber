@@ -16,4 +16,5 @@ Feature: 2.8.3 Setting
   @Area_of_independent_testing
   Scenario: Verify user can push setting buttom
     Then I click on element with xpath "//h5[contains(text(),'Setting')]"
+    Then element with xpath "//h4[contains(text(),'Setting')]" should be disabled
 
