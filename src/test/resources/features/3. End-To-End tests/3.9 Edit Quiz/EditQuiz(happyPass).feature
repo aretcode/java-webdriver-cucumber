@@ -1,5 +1,4 @@
-@Area_of_independent_testing
-Feature: 2.8.3 Setting
+Feature: 3.9 Edit Quiz (happy pass)
 
 #########################################################################################################
 #
@@ -13,7 +12,11 @@ Feature: 2.8.3 Setting
     Then I click on element with xpath "//button[@type='submit']"
 #########################################################################################################
 
-  @Area_of_independent_testing
-  Scenario: Verify user can push setting buttom
-    Then I click on element with xpath "//h5[contains(text(),'Setting')]"
-    Then element with xpath "//h4[contains(text(),'Setting')]" should be disabled
+  @3.End-To-End_tests
+  Scenario: Edit  Quiz Title
+    Then I click on element with xpath "//button[@type='submit']"
+
+
+
+
+

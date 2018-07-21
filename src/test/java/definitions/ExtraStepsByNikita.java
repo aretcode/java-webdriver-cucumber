@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.fail;
 import static support.TestContext.getDriver;
 
 public class ExtraStepsByNikita {
-    @Then("^I click on element with xpath \"([^\"]*)\"$")
+    @Then("^I click on element with xpath \"([^\"]*)\"$ 2")
     public void iClickOnElementWithXpath(String xpath) {
         for(int second = 0; ;second++){
             if(second >= 10){

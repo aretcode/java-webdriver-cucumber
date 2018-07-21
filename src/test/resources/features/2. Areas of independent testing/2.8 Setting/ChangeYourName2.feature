@@ -13,7 +13,7 @@ Feature: 2.8.1 Change your name
     Then I click on element with xpath "//button[@type='submit']"
 #########################################################################################################
 
-  @Area_of_independent_testing @Teacher @Student
+  @Area_of_independent_testing
   Scenario: Input change own name
     Then I click on element with xpath "//h5[contains(text(),'Setting')]"
     Then I click on element with xpath "//span[contains(text(),'Change Your Name')]"
@@ -22,7 +22,7 @@ Feature: 2.8.1 Change your name
     Then I click on element with xpath "//button[@aria-label='Close dialog']/../..//span[contains(text(),'Change')]"
     Then I verify that required text "Nikita Dovhych1" and text with xpath "//td[contains(text(),'Nikita')]" is equal
 
-  @Area_of_independent_testing @Teacher @Student
+  @Area_of_independent_testing
   Scenario: Input single character
     Then I click on element with xpath "//h5[contains(text(),'Setting')]"
     Then I click on element with xpath "//span[contains(text(),'Change Your Name')]"
@@ -31,7 +31,7 @@ Feature: 2.8.1 Change your name
     Then I click on element with xpath "//button[@aria-label='Close dialog']/../..//span[contains(text(),'Change')]"
     Then I verify that text with xpath "//*[contains(text(),'Should contain only first and last name')]" is displayed
 
-  @Area_of_independent_testing @Teacher @Student
+  @Area_of_independent_testing
   Scenario: Input letter and spesial characters
     Then I click on element with xpath "//h5[contains(text(),'Setting')]"
     Then I click on element with xpath "//span[contains(text(),'Change Your Name')]"
@@ -40,7 +40,7 @@ Feature: 2.8.1 Change your name
     Then I click on element with xpath "//button[@aria-label='Close dialog']/../..//span[contains(text(),'Change')]"
     Then I verify that text with xpath "//*[contains(text(),'Should contain only first and last name')]" is displayed
 
-  @Area_of_independent_testing @Teacher @Student
+  @Area_of_independent_testing
   Scenario: Require field
     Then I click on element with xpath "//h5[contains(text(),'Setting')]"
     Then I click on element with xpath "//span[contains(text(),'Change Your Name')]"
@@ -49,8 +49,7 @@ Feature: 2.8.1 Change your name
     Then I wait for 3 sec
     Then I verify that text with xpath "//*[contains(text(),'Should contain only first and last name')]" is displayed
 
-    
-  @Area_of_independent_testing @Teacher @Student
+  @Area_of_independent_testing
   Scenario: Input max 70 characters
     Then I click on element with xpath "//h5[contains(text(),'Setting')]"
     Then I click on element with xpath "//span[contains(text(),'Change Your Name')]"
