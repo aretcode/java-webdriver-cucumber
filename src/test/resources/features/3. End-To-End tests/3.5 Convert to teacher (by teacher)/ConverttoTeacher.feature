@@ -12,7 +12,7 @@ Feature: Convert to Teacher
     Then I click on element with xpath "//button[@type='submit']"
 #########################################################################################################
 
-  @3.End-To-End_tests @
+  @3.End-To-End_tests
   Scenario: Convert Student to Teacher
     Then I click on element with xpath "//h5[contains(text(),'Management')]"
     Then I click on element with xpath "//h4[contains(text(),'Alexey Test')]"
