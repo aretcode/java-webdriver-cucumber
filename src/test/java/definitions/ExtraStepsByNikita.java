@@ -3,8 +3,14 @@ package definitions;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import support.TestContext;
 
 import java.util.Random;
 
@@ -12,11 +18,17 @@ import static org.assertj.core.api.Assertions.fail;
 import static support.TestContext.getDriver;
 
 public class ExtraStepsByNikita {
-    @Then("^I click on element with xpath \"([^\"]*)\"$ 2")
+
+
+//    ExtraStepsByNikita(WebDriver driver){
+//        this.driver = driver;
+//    }
+
+    @Then("^I click on element with xpath \"([^\"]*)\" 2$")
     public void iClickOnElementWithXpath(String xpath) {
         for(int second = 0; ;second++){
-            if(second >= 10){
-                fail("timeout for element" + xpath);
+            if(second >= 1000){
+                fail("Timeout for element" + xpath);
             }
             try{
                 if(getDriver().findElement(By.xpath(xpath)).isDisplayed()){
@@ -28,6 +40,22 @@ public class ExtraStepsByNikita {
         }
     }
 
+    @Then("^I scroll to the element with xpath \"([^\"]*)\"$")
+    public void iScrollToTheElementWithXpath(String xpath) {
+        JavascriptExecutor executor = (JavascriptExecutor) getDriver();
+        for(int second = 0; ;second++){
+            if(second >= 1000){
+                fail("Timeout for element" + xpath);
+            }
+            try{
+                executor.executeScript("arguments[0].scrollIntoView(true);", getDriver().findElement(By.xpath(xpath)));
+                if(getDriver().findElement(By.xpath(xpath)).isDisplayed()){
+                    break;
+                }
+            }
+            catch(Exception e){}
+        }
+    }
 
 
     @Then("^I Cut inputed data from field with xpath \"([^\"]*)\"$")
@@ -40,6 +68,22 @@ public class ExtraStepsByNikita {
         }
         else{
             System.out.println("Menu 'Cut' is disable");
+        }
+    }
+
+    @When("^I type \"([^\"]*)\" into element with xpath \"([^\"]*)\" 2$")
+    public void iTypeIntoElementWithXpath(String text, String xpath) {
+        for(int second = 0; ;second++){
+            if(second >= 1000){
+                fail("Timeout for element" + xpath);
+            }
+            try{
+                if(getDriver().findElement(By.xpath(xpath)).isDisplayed()){
+                    getDriver().findElement(By.xpath(xpath)).sendKeys(text);
+                    break;
+                }
+            }
+            catch(Exception e){}
         }
     }
 
@@ -90,6 +134,15 @@ public class ExtraStepsByNikita {
         String buildedString = createdString.toString();
         System.out.println(buildedString);
         getDriver().findElement(By.xpath(xpath)).sendKeys(buildedString);
+    }
+
+    @Then("^Delete student \"([^\"]*)\"$")
+    public void deleteStudent(String xpath) {
+        iClickOnElementWithXpath("//*[contains(text(),'Management')]");
+        iScrollToTheElementWithXpath(xpath);
+        iClickOnElementWithXpath("//button[@color='accent']");
+        iClickOnElementWithXpath("//button[@role='menuitem']/..//*[contains(text(),'delete')]");
+        iClickOnElementWithXpath("//*[contains(text(),'Delete')]");
     }
 
     @Then("^I verify that required text \"([^\"]*)\" and text with xpath \"([^\"]*)\" is equal$")
