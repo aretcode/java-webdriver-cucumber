@@ -27,4 +27,4 @@ Feature: 3.10 Delete (happy pass)
     Then I scroll to the element with xpath "//mat-panel-title[contains(text(),'My Quizze')]"
     Then I click on element with xpath "(//mat-panel-title[contains(text(),'My Quizze')]/../../..//button)[3]" 2
     Then I click on element with xpath "(//button[@aria-label='Close dialog'])[2]" 2
-
+    Then element with xpath "//mat-panel-title[contains(text(),'My Quizze')]" should not be present
