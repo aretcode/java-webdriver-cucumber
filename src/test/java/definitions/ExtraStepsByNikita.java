@@ -4,28 +4,16 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import support.TestContext;
+import org.openqa.selenium.*;
 
 import java.util.Random;
-
 import static org.assertj.core.api.Assertions.fail;
 import static support.TestContext.getDriver;
 
 public class ExtraStepsByNikita {
 
-
-//    ExtraStepsByNikita(WebDriver driver){
-//        this.driver = driver;
-//    }
-
     @Then("^I click on element with xpath \"([^\"]*)\" 2$")
-    public void iClickOnElementWithXpath(String xpath) {
+    public static void iClickOnElementWithXpath(String xpath) {
         for(int second = 0; ;second++){
             if(second >= 1000){
                 fail("Timeout for element" + xpath);
@@ -41,7 +29,7 @@ public class ExtraStepsByNikita {
     }
 
     @Then("^I scroll to the element with xpath \"([^\"]*)\"$")
-    public void iScrollToTheElementWithXpath(String xpath) {
+    public static void iScrollToTheElementWithXpath(String xpath) {
         JavascriptExecutor executor = (JavascriptExecutor) getDriver();
         for(int second = 0; ;second++){
             if(second >= 1000){
@@ -59,7 +47,7 @@ public class ExtraStepsByNikita {
 
 
     @Then("^I Cut inputed data from field with xpath \"([^\"]*)\"$")
-    public void iCutInputedDataFromFieldWithXpath(String xpath) {
+    public static void iCutInputedDataFromFieldWithXpath(String xpath) {
         //created by Nikitos (copyright enable)
         getDriver().findElement(By.xpath(xpath)).sendKeys(Keys.CONTROL + "a");
         String result = getDriver().findElement(By.xpath(xpath)).getAttribute("value");
@@ -72,7 +60,7 @@ public class ExtraStepsByNikita {
     }
 
     @When("^I type \"([^\"]*)\" into element with xpath \"([^\"]*)\" 2$")
-    public void iTypeIntoElementWithXpath(String text, String xpath) {
+    public static void iTypeIntoElementWithXpath(String text, String xpath) {
         for(int second = 0; ;second++){
             if(second >= 1000){
                 fail("Timeout for element" + xpath);
@@ -150,6 +138,7 @@ public class ExtraStepsByNikita {
         //created by Nikitos (copyright enable)
         try{
             boolean equal = getDriver().findElement(By.xpath(xpath)).getText().equals(text);
+            System.out.println(getDriver().findElement(By.xpath(xpath)).getText());
             String equal2 = getDriver().findElement(By.xpath(xpath)).getText();
             System.out.println(equal2);
             if (equal){
@@ -158,7 +147,6 @@ public class ExtraStepsByNikita {
         }
         catch(Exception e){
         }
-        throw new PendingException();
     }
 
     @Then("^I verify that text with xpath \"([^\"]*)\" is displayed")
@@ -183,7 +171,6 @@ public class ExtraStepsByNikita {
         }else{
             System.out.println("Value from field isn't equal to required Value");
         }
-        throw new PendingException();
     }
 
 }

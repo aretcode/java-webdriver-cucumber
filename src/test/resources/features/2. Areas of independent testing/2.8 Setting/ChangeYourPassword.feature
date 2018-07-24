@@ -20,14 +20,15 @@ Feature: 2.8.2 Change your password
     When I type "0123456789" into element with xpath "//input[@placeholder='Password']" 2
     When I type "9876543210" into element with xpath "//input[@placeholder='New Password']"
     When I type "9876543210" into element with xpath "//input[@placeholder='Confirm New Password']"
-    Then I click on element with xpath "//*[contains(text(),'Change')]/..//button[@color='primary']" 2
+    Then I click on element with xpath "(//button[@aria-label])[2]" 2
     Then I click on element with xpath "//h5[contains(text(),'Log Out')]" 2
-    Then I click on element with xpath "//h5[contains(text(),'//button[@color='warn']')]" 2
+    Then I click on element with xpath "(//button[@aria-label])[2]" 2
     When I type "nikita_teacher@amail.club" into element with xpath "//input[@formcontrolname='email']" 2
     When I type "9876543210" into element with xpath "//input[@formcontrolname='password']"
     Then I click on element with xpath "//button[@type='submit']" 2
     Then I wait for 3 sec
-    Then I should see page title as "//h3[contains(text(),'Nikita Dovhych')]"
+    Then element with xpath "//h3[contains(text(),'Nikita Dovhych')]" should be displayed
+    Then Revert to back "Password" old "9876543210" new1 "0123456789"
 
   @Area_of_independent_testing
   Scenario: Input 4 characters in password field
@@ -56,6 +57,7 @@ Feature: 2.8.2 Change your password
     Then I click on element with xpath "//button[@type='submit']"
     Then I wait for 3 sec
     Then I should see page title as "//h3[contains(text(),'Nikita Dovhych')]"
+    Then Revert to back "Password" old "9876543210" new1 "0123456789"
 
   @Area_of_independent_testing
   Scenario: Password field displays input in bullets

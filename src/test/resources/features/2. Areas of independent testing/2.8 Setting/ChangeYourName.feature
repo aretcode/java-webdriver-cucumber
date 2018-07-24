@@ -17,9 +17,9 @@ Feature: 2.8.1 Change your name
     Then I click on element with xpath "//h5[contains(text(),'Setting')]" 2
     Then I click on element with xpath "//span[contains(text(),'Change Your Name')]" 2
     Then I clear element with xpath "//input[@placeholder='New name']"
-    When I type "Nikita Dovhych1" into element with xpath "//input[@placeholder='New name']"
-    Then I click on element with xpath "//button[@aria-label='Close dialog']/../..//span[contains(text(),'Change')]" 2
-    Then I verify that required text "Nikita Dovhych1" and text with xpath "//td[contains(text(),'Nikita Dovhych1')]" is equal
+    When I type "Nikitos Dovhych" into element with xpath "//input[@placeholder='New name']"
+    Then I click on element with xpath "(//button[@aria-label='Close dialog'])[2]" 2
+    Then I verify that required text "Nikitos Dovhych" and text with xpath "//td[contains(text(),'Nikitos Dovhych')]" is equal
 
   @Area_of_independent_testing
   Scenario: Input single character
@@ -27,7 +27,7 @@ Feature: 2.8.1 Change your name
     Then I click on element with xpath "//span[contains(text(),'Change Your Name')]" 2
     Then I clear element with xpath "//input[@placeholder='New name']"
     When I type "N" into element with xpath "//input[@placeholder='New name']"
-    Then I click on element with xpath "//button[@aria-label='Close dialog']/../..//span[contains(text(),'Change')]" 2
+    Then I click on element with xpath "(//button[@aria-label='Close dialog'])[2]" 2
     Then I verify that text with xpath "//*[contains(text(),'Should contain only first and last name')]" is displayed
 
   @Area_of_independent_testing
@@ -36,7 +36,7 @@ Feature: 2.8.1 Change your name
     Then I click on element with xpath "//span[contains(text(),'Change Your Name')]" 2
     Then I clear element with xpath "//input[@placeholder='New name']"
     When I type "Dim@#$%$#@" into element with xpath "//input[@placeholder='New name']"
-    Then I click on element with xpath "//button[@aria-label='Close dialog']/../..//span[contains(text(),'Change')]" 2
+    Then I click on element with xpath "(//button[@aria-label='Close dialog'])[2]" 2
     Then I verify that text with xpath "//*[contains(text(),'Should contain only first and last name')]" is displayed
 
   @Area_of_independent_testing
@@ -44,7 +44,7 @@ Feature: 2.8.1 Change your name
     Then I click on element with xpath "//h5[contains(text(),'Setting')]" 2
     Then I click on element with xpath "//span[contains(text(),'Change Your Name')]" 2
     Then I clear element with xpath "//input[@placeholder='New name']"
-    Then I click on element with xpath "//button[@aria-label='Close dialog']/../..//span[contains(text(),'Change')]"
+    Then I click on element with xpath "(//button[@aria-label='Close dialog'])[2]"
     Then I wait for 3 sec
     Then I verify that text with xpath "//*[contains(text(),'Should contain only first and last name')]" is displayed
 
@@ -54,6 +54,6 @@ Feature: 2.8.1 Change your name
     Then I click on element with xpath "//span[contains(text(),'Change Your Name')]" 2
     Then I clear element with xpath "//input[@placeholder='New name']"
     When I type "ABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDE ABCDEABCDEABCDEABCDEABCDEABCD" into element with xpath "//input[@placeholder='New name']"
-    Then I click on element with xpath "//button[@aria-label='Close dialog']/../..//span[contains(text(),'Change')]" 2
+    Then I click on element with xpath "(//button[@aria-label='Close dialog'])[2]" 2
     Then I verify that required text "ABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDE ABCDEABCDEABCDEABCDEABCDEABCD" and text with xpath "//td[contains(text(),'ABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDE ABCDEABCDEABCDEABCDEABCDEABCD')]" is equal
 
